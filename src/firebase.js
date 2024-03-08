@@ -6,15 +6,14 @@ import Filter from 'bad-words'
 import { ref, onUnmounted, computed } from 'vue'
 
 firebase.initializeApp({
-  apiKey: "AIzaSyApA-8e0Qhj2CnFXM3g3sX0P9v5no8ONbY",
-  // authDomain: "test-firebase-2-eef1c.firebaseapp.com",
-  authDomain: "https://tuantv.tech/",
-  databaseURL: "https://test-firebase-2-eef1c-default-rtdb.asia-southeast1.firebasedatabase.app",
-  projectId: "test-firebase-2-eef1c",
-  storageBucket: "test-firebase-2-eef1c.appspot.com",
-  messagingSenderId: "765214969148",
-  appId: "1:765214969148:web:02c64ff21abd8c99fa2239",
-  measurementId: "G-VH5JCJQT1E"
+  apiKey: 'AIzaSyD6TOQdgZgFPBdryTEwXslaKI2jT-JPNzU',
+  authDomain: 'test-firebase-3f25e.firebaseapp.com',
+  databaseURL: 'https://test-firebase-3f25e-default-rtdb.asia-southeast1.firebasedatabase.app',
+  projectId: 'test-firebase-3f25e',
+  storageBucket: 'test-firebase-3f25e.appspot.com',
+  messagingSenderId: '1008215832442',
+  appId: '1:1008215832442:web:a2df2694356f20648748c3',
+  measurementId: 'G-QCYVH051K5'
 })
 
 const auth = firebase.auth()
@@ -33,7 +32,7 @@ export function useAuth() {
 
   return { user, isLogin, signIn, signOut }
 }
-//add function useAnonymousAuth
+
 export function useAnonymousAuth() {
   const user = ref(null)
   const unsubscribe = auth.onAuthStateChanged(_user => (user.value = _user))
@@ -48,10 +47,9 @@ export function useAnonymousAuth() {
   return { user, isLogin, signInAuth, signOut }
 }
 
-
 const firestore = firebase.firestore()
 const messagesCollection = firestore.collection('messages')
-const messagesQuery = messagesCollection.orderBy('createdAt', 'desc').limit(100)
+const messagesQuery = messagesCollection.orderBy('createdAt', 'desc').limit(25)
 const filter = new Filter()
 
 export function useChat() {
@@ -63,7 +61,7 @@ export function useChat() {
   })
   onUnmounted(unsubscribe)
 
-  const { user, isLogin } = useAuth() && useAnonymousAuth()
+  const { user, isLogin } = useAuth() || useAnonymousAuth()
   const sendMessage = text => {
     if (!isLogin.value) return
     const { photoURL, uid, displayName } = user.value
