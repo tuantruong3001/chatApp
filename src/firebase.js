@@ -7,7 +7,8 @@ import { ref, onUnmounted, computed } from 'vue'
 
 firebase.initializeApp({
   apiKey: "AIzaSyApA-8e0Qhj2CnFXM3g3sX0P9v5no8ONbY",
-  authDomain: "test-firebase-2-eef1c.firebaseapp.com",
+  // authDomain: "test-firebase-2-eef1c.firebaseapp.com",
+  authDomain: "https://tuantv.tech/",
   databaseURL: "https://test-firebase-2-eef1c-default-rtdb.asia-southeast1.firebasedatabase.app",
   projectId: "test-firebase-2-eef1c",
   storageBucket: "test-firebase-2-eef1c.appspot.com",
