@@ -1,4 +1,6 @@
-# Vue 3 - Realtime Chat App
+# Vue.js- Realtime Chat App
+
+## Link Demo: https://tuantv.tech/
 
 ## Project setup
 
@@ -17,3 +19,11 @@ yarn serve
 ```
 yarn build
 ```
+### If cant run the project, please run the command below
+follow link: https://github.com/coreybutler/nvm-windows/releases
+and dolowload nvm-setup.zip
+```
+nvm install 14
+nvm use 14
+```
+TuanTV

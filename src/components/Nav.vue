@@ -1,11 +1,10 @@
 <template>
   <nav>
     <div>
-      <h1><strong>Vue</strong> Chat App</h1>
+      <h1><strong>Discord Fake</strong></h1>
 
       <div v-if="isLogin" class="login">
-        <Avatar :src="user.photoURL" />
-<!--        <span>{{ user.displayName }}</span>-->
+        <Avatar :src="user.photoURL || randomImage" />
         <button class="text-gray-400 hover:text-white" @click="signOut">
           Sign Out
         </button>
@@ -22,11 +21,16 @@
 import Avatar from './Avatar.vue'
 import { useAuth } from '@/firebase'
 
+const images = require.context('@/images', false, /\.jpg$/)
+const imageArray = images.keys().map(images)
+
 export default {
   components: { Avatar },
   setup() {
     const { user, isLogin, signOut, signIn } = useAuth()
-    return { user, isLogin, signOut, signIn }
+    const randomImage =
+      imageArray[Math.floor(Math.random() * imageArray.length)]
+    return { user, isLogin, signOut, signIn, randomImage }
   }
 }
 </script>
