@@ -32,6 +32,21 @@ export function useAuth() {
 
   return { user, isLogin, signIn, signOut }
 }
+//add function useAnonymousAuth
+export function useAnonymousAuth() {
+  const user = ref(null)
+  const unsubscribe = auth.onAuthStateChanged(_user => (user.value = _user))
+  onUnmounted(unsubscribe)
+  const isLogin = computed(() => user.value !== null)
+
+  const signInAuth = async () => {
+    await auth.signInAnonymously()
+  }
+  const signOut = () => auth.signOut()
+
+  return { user, isLogin, signInAuth, signOut }
+}
+
 
 const firestore = firebase.firestore()
 const messagesCollection = firestore.collection('messages')
@@ -47,7 +62,7 @@ export function useChat() {
   })
   onUnmounted(unsubscribe)
 
-  const { user, isLogin } = useAuth()
+  const { user, isLogin } = useAuth() && useAnonymousAuth()
   const sendMessage = text => {
     if (!isLogin.value) return
     const { photoURL, uid, displayName } = user.value

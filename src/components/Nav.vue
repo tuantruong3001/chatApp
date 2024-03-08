@@ -5,6 +5,7 @@
 
       <div v-if="isLogin" class="login">
         <Avatar :src="user.photoURL" />
+        <span>{{ user.displayName }}</span>
         <button class="text-gray-400 hover:text-white" @click="signOut">
           Sign Out
         </button>
