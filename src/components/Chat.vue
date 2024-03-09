@@ -30,6 +30,7 @@
 <script>
 import { ref, watch, nextTick } from 'vue'
 import { useAuth, useChat } from '@/firebase'
+import { useStorage } from '@/firebase'
 
 import SendIcon from './SendIcon.vue'
 import Message from './Message.vue'
@@ -52,12 +53,20 @@ export default {
     )
 
     const message = ref('')
-    const send = () => {
-      sendMessage(message.value)
+    const image = ref(null) // Add a ref for the image file
+    const send = async () => {
+      let imageUrl = ''
+      if (image.value) {
+        imageUrl = await useStorage(image.value) // Upload the image and get the URL
+      }
+      sendMessage(message.value, imageUrl) // Send the message with the image URL
       message.value = ''
+      image.value = null
     }
-
-    return { user, isLogin, messages, bottom, message, send }
+    const onFileChange = (e) => {
+      image.value = e.target.files[0]
+    }
+    return { user, isLogin, messages, bottom, message, image, send, onFileChange } // Add onFileChange here
   }
 }
 </script>

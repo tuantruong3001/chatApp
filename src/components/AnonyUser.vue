@@ -1,7 +1,7 @@
 <template>
   <div>
     <button class="bg-green-500 hover:bg-green-600" @click="signInAuth">
-      Sign in Anonymously
+      Non User
     </button>
   </div>
 </template>

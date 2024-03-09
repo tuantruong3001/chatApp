@@ -13,12 +13,14 @@
       <button v-else class="bg-green-500 hover:bg-green-600" @click="signIn">
         Sign in
       </button>
+      <AnonyUser />
     </div>
   </nav>
 </template>
 
 <script>
 import Avatar from './Avatar.vue'
+import AnonyUser from './AnonyUser.vue'
 import { useAuth } from '@/firebase'
 
 const images = require.context('@/images', false, /\.jpg$/)
@@ -30,7 +32,7 @@ export default {
     const { user, isLogin, signOut, signIn } = useAuth()
     const randomImage =
       imageArray[Math.floor(Math.random() * imageArray.length)]
-    return { user, isLogin, signOut, signIn, randomImage }
+    return { user, isLogin, signOut, signIn, randomImage, AnonyUser }
   }
 }
 </script>
