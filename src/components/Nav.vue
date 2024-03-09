@@ -1,7 +1,7 @@
 <template>
   <nav>
     <div>
-      <h1><strong>Discord Fake</strong></h1>
+      <h1><strong>Discord</strong></h1>
 
       <div v-if="isLogin" class="login">
         <Avatar :src="user.photoURL || randomImage" />
