@@ -31,12 +31,13 @@ export default {
       imageArray[Math.floor(Math.random() * imageArray.length)]
     return { randomImage }
   }
+
 }
 </script>
 <style scoped>
 .message-image {
-  width: auto; /* Adjust as needed */
-  height: 200px; /* Adjust as needed */
+  width: auto;
+  height: 200px;
   margin-right: 40px;
   margin-bottom: 60px;
   flex-direction: row-reverse;
