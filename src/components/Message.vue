@@ -6,6 +6,7 @@
       <div class="text w-3/4" :class="sender ? 'bg-green-800' : 'bg-gray-700'">
         <slot />
       </div>
+      <img v-if="imageUrl" :src="imageUrl" alt="Sent image" />
     </div>
   </div>
 </template>
@@ -21,7 +22,8 @@ export default {
   props: {
     name: { type: String, default: '' },
     photoUrl: { type: String, default: '' },
-    sender: { type: Boolean, default: false }
+    sender: { type: Boolean, default: false },
+    imageUrl: String
   },
   data() {
     const randomImage =

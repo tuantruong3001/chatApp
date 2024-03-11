@@ -78,3 +78,22 @@ export function useChat() {
 
   return { messages, sendMessage }
 }
+const useStorage = () => {
+  const error = ref(null)
+  const url = ref(null)
+  const uploadImage = async (image) => {
+    const storageRef = firebase.storage().ref(`images/${image.name}`)
+    try {
+      const res = await storageRef.put(image)
+      url.value = await res.ref.getDownloadURL()
+    } catch (err) {
+      console.error(err.message)
+      error.value = err.message
+    }
+    return url.value; // Return the URL of the uploaded file
+  };
+
+  return { url, error, uploadImage }
+};
+
+export default useStorage
