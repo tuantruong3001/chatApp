@@ -51,7 +51,7 @@ export function useAnonymousAuth() {
 
 const firestore = firebase.firestore()
 const messagesCollection = firestore.collection('messages')
-const messagesQuery = messagesCollection.orderBy('createdAt', 'desc').limit(25)
+const messagesQuery = messagesCollection.orderBy('createdAt', 'desc').limit(15)
 const filter = new Filter()
 
 export function useChat() {
@@ -64,7 +64,7 @@ export function useChat() {
   onUnmounted(unsubscribe)
 
   const { user, isLogin } = useAuth() || useAnonymousAuth()
-  const sendMessage = text => {
+  const sendMessage = (text, imageUrl) => {
     if (!isLogin.value) return
     const { photoURL, uid, displayName } = user.value
     messagesCollection.add({
@@ -72,6 +72,7 @@ export function useChat() {
       userId: uid,
       userPhotoURL: photoURL,
       text: filter.clean(text),
+      imageUrl: imageUrl, // Add this line
       createdAt: firebase.firestore.FieldValue.serverTimestamp()
     })
   }

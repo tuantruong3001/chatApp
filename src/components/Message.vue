@@ -6,9 +6,9 @@
       <div class="text w-3/4" :class="sender ? 'bg-green-800' : 'bg-gray-700'">
         <slot />
       </div>
-      <img v-if="imageUrl" :src="imageUrl" alt="Sent image" />
     </div>
   </div>
+  <img v-if="imageUrl" :src="imageUrl" alt="Sent image" class=" flex message-image" />
 </template>
 
 <script>
@@ -32,3 +32,9 @@ export default {
   }
 }
 </script>
+<style scoped>
+.message-image {
+  width: auto; /* Adjust as needed */
+  height: 200px; /* Adjust as needed */
+}
+</style>
