@@ -3,12 +3,13 @@
     <span v-if="!sender">{{ name }}</span>
     <div class="flex" :class="sender ? 'flex-row-reverse' : ''">
       <Avatar class="mt-1" :src="photoUrl || randomImage" />
-      <div class="text w-3/4" :class="sender ? 'bg-green-800' : 'bg-gray-700'">
+      <div class="text w-3/4" :class="sender ? 'bg-green-800' : 'bg-gray-700'" style="width: auto">
         <slot />
       </div>
     </div>
   </div>
-  <img v-if="imageUrl" :src="imageUrl" alt="Sent image" class=" flex message-image" />
+  <img v-if="imageUrl" :src="imageUrl" alt="Sent image" class="message-image" />
+
 </template>
 
 <script>
@@ -36,5 +37,8 @@ export default {
 .message-image {
   width: auto; /* Adjust as needed */
   height: 200px; /* Adjust as needed */
+  margin-right: 40px;
+  margin-bottom: 60px;
+  flex-direction: row-reverse;
 }
 </style>
