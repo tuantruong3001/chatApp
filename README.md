@@ -1,4 +1,4 @@
-# Vue.js- Realtime Chat App
+# Vue.js- Chat App with Firebase, CICD, Environment Variables
 
 ## Link Demo: https://tuantv.tech/
 
