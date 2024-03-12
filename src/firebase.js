@@ -7,7 +7,7 @@ import Filter from 'bad-words'
 import { ref, onUnmounted, computed } from 'vue'
 
 firebase.initializeApp({
-  apiKey: 'AIzaSyD6TOQdgZgFPBdryTEwXslaKI2jT-JPNzU',
+  apiKey: process.env.VUE_APP_API_KEY,
   authDomain: 'test-firebase-3f25e.firebaseapp.com',
   databaseURL:
     'https://test-firebase-3f25e-default-rtdb.asia-southeast1.firebasedatabase.app',
