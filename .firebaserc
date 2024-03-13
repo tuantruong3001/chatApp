@@ -1,5 +1,8 @@
 {
   "projects": {
-    "default": "vue-chat-app-27d21"
-  }
+    "default": "test-firebase-3f25e",
+    "test-firebase-3f25e": "test-firebase-3f25e"
+  },
+  "targets": {},
+  "etags": {}
 }
